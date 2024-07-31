@@ -18,17 +18,17 @@ function fetch_emails($mailbox, $username, $password, $start = 0, $limit = 10) {
     $output = [];
     if ($emails) {
         rsort($emails);
-        $emails = array_slice($emails, $start, $limit); // Fetch emails based on start and limit
+        $emails = array_slice($emails, $start, $limit); 
         foreach ($emails as $email_number) {
             $overview = imap_fetch_overview($inbox, $email_number, 0);
             $message = imap_fetchbody($inbox, $email_number, 1.1);
 
-            // If there's no plain text body, try the HTML body
+            
             if (empty($message)) {
                 $message = imap_fetchbody($inbox, $email_number, 1);
             }
 
-            // Decode email subject, from, and body
+           
             $subject = decode_imap_text($overview[0]->subject);
             $from = decode_imap_text($overview[0]->from);
             $message = quoted_printable_decode($message);
@@ -47,7 +47,7 @@ function fetch_emails($mailbox, $username, $password, $start = 0, $limit = 10) {
     return $output;
 }
 
-// Fetch emails
+
 try {
     $emails = fetch_emails('{imap.gmail.com:993/imap/ssl}INBOX', 'dulsharulzzz@gmail.com', 'mujq ajfy puhc yzyp');
 } catch (Exception $e) {

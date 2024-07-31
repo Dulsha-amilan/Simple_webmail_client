@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         $result = $mailer->send($mailMessage);
         if ($result) {
-            echo "Mail sent successfully.";
+            echo "Mail sent successfully";
 
           
             $conn = new mysqli($servername, $username, $password, $dbname);

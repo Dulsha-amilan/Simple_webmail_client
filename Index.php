@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Webmail Client</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.7/flowbite.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.7/flowbite.min.css">
     <style>
         .card {
             background: #ffffff;
-            border-radius: 0.75rem; 
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06); 
-            transition: all 0.3s ease-in-out; 
-            max-width: 100%; 
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease-in-out;
         }
         .card:hover {
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05); 
-            transform: translateY(-4px); 
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+            transform: translateY(-4px);
         }
         .input-field {
             background-color: #f9fafb;
@@ -25,18 +23,18 @@
             border-radius: 0.5rem;
             padding: 0.75rem;
             font-size: 0.875rem;
-            color: #4b5563; 
+            color: #4b5563;
         }
         .input-field:focus {
-            border-color: #3b82f6; 
+            border-color: #3b82f6;
             outline: none;
-            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5); 
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
         }
         .nav-link {
-            margin-bottom: 2.5rem; 
+            margin-bottom: 2.5rem;
         }
         .message-field {
-            height: 200px; 
+            height: 200px;
         }
     </style>
 </head>
@@ -100,39 +98,38 @@
                 <h2 class="text-2xl font-bold mb-6">Sent Mails</h2>
                 <ul id="sent-mails" class="space-y-4">
                     <?php
-                    // Include the database configuration file
                     include 'config.php';
                     
-                    // Create a connection to the database
-                    $conn = new mysqli($servername, $username, $password, $dbname);
                     
-                    // Check the connection
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
+                    try {
+                        $dsn = "mysql:host=$servername;dbname=$dbname;charset=utf8mb4";
+                        $pdo = new PDO($dsn, $username, $password, [
+                            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                        ]);
                     
-                    // Query to fetch sent mails from the database
-                    $sql = "SELECT * FROM sent_mails ORDER BY sent_at DESC";
-                    $result = $conn->query($sql);
+                     
+                        $sql = "SELECT * FROM sent_mails ORDER BY sent_at DESC";
+                        $stmt = $pdo->query($sql);
                     
-                    // Display the sent mails
-                    if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                            echo "<li class='p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-200'>
-                                    <div class='flex flex-col space-y-2'>
-                                        <p class='text-sm font-medium text-gray-900'>To: " . htmlspecialchars($row['email']) . "</p>
-                                        <p class='text-sm text-gray-600'>Subject: " . htmlspecialchars($row['subject']) . "</p>
-                                        <p class='text-sm text-gray-600'>Message: " . htmlspecialchars($row['message']) . "</p>
-                                        <p class='text-sm text-gray-500 mt-2'>" . $row['sent_at'] . "</p>
-                                    </div>
-                                  </li>";
+                       
+                        if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch()) {
+                                echo "<li class='p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-200'>
+                                        <div class='flex flex-col space-y-2'>
+                                            <p class='text-sm font-medium text-gray-900'>To: " . htmlspecialchars($row['email']) . "</p>
+                                            <p class='text-sm text-gray-600'>Subject: " . htmlspecialchars($row['subject']) . "</p>
+                                            <p class='text-sm text-gray-600'>Message: " . htmlspecialchars($row['message']) . "</p>
+                                            <p class='text-sm text-gray-500 mt-2'>" . $row['sent_at'] . "</p>
+                                        </div>
+                                      </li>";
+                            }
+                        } else {
+                            echo "<li class='p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-200'>No sent mails</li>";
                         }
-                    } else {
-                        echo "<li class='p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-200'>No sent mails</li>";
+                    } catch (PDOException $e) {
+                        echo "Connection failed: " . $e->getMessage();
                     }
-                    
-                    // Close the database connection
-                    $conn->close();
                     ?>
                 </ul>
             </div>
