@@ -4,38 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Webmail Client</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.7/flowbite.min.css" rel="stylesheet">
     <style>
         .card {
             background: #ffffff;
-            border-radius: 0.75rem; /* Rounded corners */
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06); /* Subtle shadow */
-            transition: all 0.3s ease-in-out; /* Smooth transition */
-            max-width: 100%; /* Ensure card fits within container */
+            border-radius: 0.75rem; 
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06); 
+            transition: all 0.3s ease-in-out; 
+            max-width: 100%; 
         }
         .card:hover {
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05); /* Elevated shadow on hover */
-            transform: translateY(-4px); /* Slight lift on hover */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05); 
+            transform: translateY(-4px); 
         }
         .input-field {
             background-color: #f9fafb;
             border: 1px solid #e5e7eb;
-            border-radius: 0.5rem; /* Rounded corners */
+            border-radius: 0.5rem;
             padding: 0.75rem;
             font-size: 0.875rem;
-            color: #4b5563; /* Gray 600 */
+            color: #4b5563; 
         }
         .input-field:focus {
-            border-color: #3b82f6; /* Blue 500 */
+            border-color: #3b82f6; 
             outline: none;
-            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5); /* Blue focus ring */
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5); 
         }
         .nav-link {
-            margin-bottom: 2.5rem; /* Margin bottom for spacing */
+            margin-bottom: 2.5rem; 
         }
         .message-field {
-            height: 200px; /* Adjust height of message textarea */
+            height: 200px; 
         }
     </style>
 </head>
