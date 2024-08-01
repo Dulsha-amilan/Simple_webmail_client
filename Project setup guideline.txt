@@ -1,0 +1,53 @@
+GitHub = https://github.com/Dulsha-amilan/Simple.git
+
+1. Open XAMPP Control Panel 
+    1.1 Turn on Apache Service
+    1.2 Turn on the MySQL Server 
+
+2. Project folder (Simple) add the the xammp htdocs file
+
+3.Import the sent_mails.sql in your SQL server 
+
+4.Ensure you have a MySQL database named webmail_client and update config.php with the appropriate credentials 
+
+5.Configure Your Gmail Account
+
+   Use App Password (if 2-Step Verification is enabled)
+   Go to your Google Account settings.
+   Navigate to the "Security" section.
+   Under "Signing in to Google," select "App passwords."
+   Generate an app password and use it in your send_mail.php script instead of your Gmail password.
+
+6. Go to the send mail php file to provide appropriate credentials (line =18,19,24)
+   Go to the fetchmail php file to provide appropriate credentials (line =52)
+
+
+-------------------------------------------------------------------------------------------
+Received Mails configuration section
+
+
+7. Enable IMAP in Your Gmail Account
+   Go to your Google Account settings.
+   Navigate to the "Security" section.
+   Under "Signing in to Google," ensure "Less secure app access" is turned on or use an app password if you have 2-Step    
+   Verification enabled.
+   Enable IMAP in your Gmail settings by going to Gmail > Settings > See all settings > Forwarding and POP/IMAP > Enable IMAP.
+
+
+8. Install the PHP IMAP Extension
+   Ensure the IMAP extension is enabled in your PHP configuration.
+
+   For XAMPP:
+
+   Open php.ini (located in C:\xampp\php\).
+   Find and uncomment (remove the ; at the beginning) the line: extension=imap.
+   For WAMP:
+
+   Open php.ini (located in C:\wamp\bin\php\php{version}\).
+   Find and uncomment the line: extension=php_imap.dll.
+   Restart your web server after making this change.
+
+
+
+9. http://localhost/simple/ and go to the URL
+

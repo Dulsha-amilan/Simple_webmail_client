@@ -49,7 +49,7 @@ function fetch_emails($mailbox, $username, $password, $start = 0, $limit = 10) {
 
 
 try {
-    $emails = fetch_emails('{imap.gmail.com:993/imap/ssl}INBOX', 'dulsharulzzz@gmail.com', 'mujq ajfy puhc yzyp');
+    $emails = fetch_emails('{imap.gmail.com:993/imap/ssl}INBOX', 'Enter you mail', 'Enter you password');
 } catch (Exception $e) {
     echo 'Error: ' . $e->getMessage();
 }
