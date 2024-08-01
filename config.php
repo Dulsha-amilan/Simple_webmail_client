@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "root";//provide appropriate credentials
+$password = "";//provide appropriate credentials
 $dbname = "webmail_client";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
