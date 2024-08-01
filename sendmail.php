@@ -6,22 +6,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = $_POST['subject'];
     $message = $_POST['message'];
 
-    
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
     $subject = htmlspecialchars($subject);
     $message = htmlspecialchars($message);
 
-   
     require 'vendor/autoload.php';
 
     $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'tls'))
-        ->setUsername('Enter your email address') //provide appropriate credentials
-        ->setPassword('Enter your password');//provide appropriate credentials
+        ->setUsername('dulsharulzzz@gmail.com') // Replace with your actual email
+        ->setPassword('mujq ajfy puhc yzyp'); // Replace with your actual password
 
     $mailer = new Swift_Mailer($transport);
 
     $mailMessage = (new Swift_Message($subject))
-        ->setFrom(['Enter your email address' => 'YourName'])//provide appropriate credentials
+        ->setFrom(['your_email@gmail.com' => 'YourName']) // Replace with your actual email and name
         ->setTo([$email])
         ->setBody($message);
        
@@ -30,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result) {
             echo "Mail sent successfully";
 
-          
             $conn = new mysqli($servername, $username, $password, $dbname);
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);

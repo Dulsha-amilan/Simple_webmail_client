@@ -6,8 +6,7 @@
     <title>Simple Webmail Client</title>
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.7/flowbite.min.css">
-    <Link rel="stylesheet" href="Style.css">
-    
+    <link rel="stylesheet" href="Style.css">
 </head>
 <body class="bg-gray-100">
     <div class="flex min-h-screen">
@@ -71,19 +70,16 @@
                     <?php
                     include 'config.php';
                     
-                    
                     try {
                         $dsn = "mysql:host=$servername;dbname=$dbname;charset=utf8mb4";
                         $pdo = new PDO($dsn, $username, $password, [
                             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                         ]);
-                    
-                     
+
                         $sql = "SELECT * FROM sent_mails ORDER BY sent_at DESC";
                         $stmt = $pdo->query($sql);
-                    
-                       
+
                         if ($stmt->rowCount() > 0) {
                             while ($row = $stmt->fetch()) {
                                 echo "<li class='p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-200'>
