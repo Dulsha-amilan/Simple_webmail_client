@@ -1,4 +1,5 @@
-GitHub = https://github.com/Dulsha-amilan/Simple.git
+GitHub =https://github.com/Dulsha-amilan/Simple_webmail_client.git
+
 
 1. Open XAMPP Control Panel 
     1.1 Turn on Apache Service
