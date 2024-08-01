@@ -13,8 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require 'vendor/autoload.php';
 
     $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'tls'))
-        ->setUsername('dulsharulzzz@gmail.com') // Replace with your actual email
-        ->setPassword('mujq ajfy puhc yzyp'); // Replace with your actual password
+        ->setUsername('Enter your email address') // Replace with your actual email
+        ->setPassword('Enter your password'); // Replace with your actual password
 
     $mailer = new Swift_Mailer($transport);
 

@@ -39,9 +39,29 @@ Received Mails configuration section
    Ensure the IMAP extension is enabled in your PHP configuration.
 
    For XAMPP:
+   Locate your php.ini file:
 
-   Open php.ini (located in C:\xampp\php\).
-   Find and uncomment (remove the ; at the beginning) the line: extension=imap.
+   The php.ini file is usually located in the php directory of your XAMPP installation (e.g., C:\xampp\php\php.ini).
+   Open the php.ini file:
+
+   Open the php.ini file in a text editor.
+   Enable the IMAP extension:
+   
+   Find the following line in the php.ini file
+   -----------------
+   ;extension=imap
+   -----------------
+   Remove the semicolon (;) at the beginning of the line to uncomment it
+   ------------------
+   extension=imap
+   ------------------
+   Save the changes:
+
+   Save the php.ini file after making the changes.
+   Restart Apache:
+
+   Restart the Apache server in XAMPP for the changes to take effect. You can do this from the XAMPP Control Panel.
+
    For WAMP:
 
    Open php.ini (located in C:\wamp\bin\php\php{version}\).
