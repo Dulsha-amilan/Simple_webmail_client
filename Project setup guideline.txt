@@ -19,7 +19,7 @@ GitHub =https://github.com/Dulsha-amilan/Simple_webmail_client.git
    Under "Signing in to Google," select "App passwords."
    Generate an app password and use it in your send_mail.php script instead of your Gmail password.
 
-6. Go to the send mail php file to provide appropriate credentials (line =18,19,24)
+6. Go to the send mail php file to provide appropriate credentials (line =16,17,22)
    Go to the fetchmail php file to provide appropriate credentials (line =52)
 
 
