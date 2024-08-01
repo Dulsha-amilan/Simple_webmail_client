@@ -5,7 +5,7 @@ GitHub =https://github.com/Dulsha-amilan/Simple_webmail_client.git
     1.1 Turn on Apache Service
     1.2 Turn on the MySQL Server 
 
-2. Project folder (Simple) add the the xammp htdocs file
+2. Project folder (Simplewebmailclient) add the the xammp htdocs file
 
 3.Import the sent_mails.sql in your SQL server 
 
@@ -50,5 +50,5 @@ Received Mails configuration section
 
 
 
-9. http://localhost/simple/ and go to the URL
+9. http://localhost/Simplewebmailclient/ and go to the URL
 
